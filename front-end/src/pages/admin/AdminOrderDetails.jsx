@@ -33,17 +33,17 @@ export default function AdminOrderDetails() {
       </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col gap-4 p-4 bg-white rounded-md">
-          <div>translate <span>#{order.id}</span></div>
+          <div>เลขที่คำสั่งซื้อ <span>#{order.id}</span></div>
           
           <div className="grid grid-cols-2 place-content-between">
             <div className="flex items-center gap-x-1">
               <Icons.calendar />
-              <div> translate</div>
+              <div> วันที่สั่งซื้อ</div>
             </div>
             {thaiDateFormat(order.orderDate)}
             <div className="flex items-center gap-x-1">
               <Icons.creditcard />
-              <div>translate</div>
+              <div>วิธีการชำระ</div>
 
             </div>
             <div className="place-self-end">{order.payment.method}</div>
@@ -52,28 +52,28 @@ export default function AdminOrderDetails() {
           
         </div>
         <div className="flex flex-col col-span-2 gap-4 p-4 bg-white rounded-md">
-          <h1>translate</h1>
+          <h1>ข้อมูลผู้สั่งซื้อ</h1>
           <div className="grid grid-cols-2 place-content-between">
             <div className="flex items-center gap-x-1">
               <Icons.user />
-              <div> translate</div>
+              <div> ชื่อ-นามสกุล</div>
             </div>
             <div className="place-self-end">{order.user.firstName} {order.user.lastName}</div>
             <div className="flex items-center gap-x-1">
               <Icons.mail />
-              <div> translate</div>
+              <div> อีเมล</div>
             </div>
             <div className="place-self-end">{order.user.email}</div>
             <div className="flex items-center gap-x-1">
               <Icons.phone />
-              <div>translate</div>
+              <div>เบอร์โทร</div>
 
             </div>
             <div className="place-self-end">{order.user.phoneNumber}</div>
           </div>
         </div>
         <div className="flex flex-col col-span-2 gap-4 p-4 bg-white rounded-md">
-          <h1>translate</h1>
+          <h1>รายละเอียดคำสั่งซื้อ</h1>
           <Table>
             <TableHeader>
               <TableRow>
@@ -106,22 +106,22 @@ export default function AdminOrderDetails() {
             <TableFooter>
               <TableRow>
                 <TableCell colSpan={5}></TableCell>
-                <TableCell colSpan={1}>sub total</TableCell>
+                <TableCell colSpan={1}>ยอดรวม</TableCell>
                 <TableCell className="text-right">{calculateItemsTotal(order.orderDetails)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell colSpan={5}></TableCell>
-                <TableCell colSpan={1}>vat</TableCell>
+                <TableCell colSpan={1}>ภาษี</TableCell>
                 <TableCell className="text-right">{calculateTax(calculateItemsTotal(order.orderDetails), 7)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell colSpan={5}></TableCell>
-                <TableCell colSpan={1}>shipping</TableCell>
+                <TableCell colSpan={1}>ค่าจัดส่ง</TableCell>
                 <TableCell className="text-right">{order.deliveryFee}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell colSpan={5}></TableCell>
-                <TableCell colSpan={1}>Total</TableCell>
+                <TableCell colSpan={1}>ยอดรวมสุทธิ</TableCell>
                 <TableCell className="text-right">{(calculateItemsTotal(order.orderDetails) + order.deliveryFee) * 1.07}</TableCell>
               </TableRow>
             </TableFooter>
@@ -131,11 +131,11 @@ export default function AdminOrderDetails() {
           
         </div>
         <div className="flex flex-col gap-4 p-4 bg-white rounded-md">
-          <h1>translate</h1>
+          <h1>ที่อยู่ในการจัดส่ง</h1>
           <div className="flex items-center gap-x-1">
             <Icons.mapPin />
             <div className="flex flex-col gap-y-1">
-              <div>translate</div>
+              <div>ที่อยู่</div>
               {thaiAddress(order.shippingAddress)}
             </div>
 
